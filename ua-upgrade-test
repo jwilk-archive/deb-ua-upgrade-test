@@ -6,7 +6,7 @@ do
 set -e
 apt-get install -yqq $package
 update-alternatives --get-selections | sort > /var/lib/ua-selections
-sed -i -e 's/ auto / manual /' /var/lib/ua-selections 
+sed -i -e 's/ auto / manual /' /var/lib/ua-selections
 update-alternatives --set-selections < /var/lib/ua-selections
 apt-get install --reinstall -qq $package
 update-alternatives --get-selections | sort | diff -b --label before --label after -u /var/lib/ua-selections -
