@@ -1,5 +1,13 @@
 #!/bin/sh
 chroot=unstable-i386-sbuild
+while getopts 'c:' opt
+do
+    case "$opt" in
+        c) chroot="$OPTARG";;
+        *) exit 1;;
+    esac
+done
+shift $((OPTIND - 1))
 for package in "$@"
 do
 (schroot --directory / -c $chroot -u root -- sh -c "
