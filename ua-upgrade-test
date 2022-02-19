@@ -1,14 +1,26 @@
 #!/bin/sh
+
+usage()
+{
+    printf '%s: [-c CHROOT] PACKAGE...\n' "${0#**/}"
+}
+
 set -e -u
 chroot=unstable
-while getopts 'c:' opt
+while getopts 'c:h' opt
 do
     case "$opt" in
         c) chroot="$OPTARG";;
+        h) usage; exit;;
         *) exit 1;;
     esac
 done
 shift $((OPTIND - 1))
+if [ $# -eq 0 ]
+then
+    usage >&2
+    exit 1
+fi
 for package in "$@"
 do
 (schroot --directory / -c "$chroot" -u root -- sh -c "
