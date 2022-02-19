@@ -10,7 +10,7 @@ done
 shift $((OPTIND - 1))
 for package in "$@"
 do
-(schroot --directory / -c $chroot -u root -- sh -c "
+(schroot --directory / -c "$chroot" -u root -- sh -c "
 set -e
 apt-get install -yqq $package
 update-alternatives --get-selections | sort > /var/lib/ua-selections
