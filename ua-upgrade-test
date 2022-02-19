@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Copyright © 2012-2022 Jakub Wilk <jwilk@jwilk.net>
+# SPDX-License-Identifier: MIT
+
 usage()
 {
     printf '%s: [-c CHROOT] PACKAGE...\n' "${0#**/}"
