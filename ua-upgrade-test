@@ -1,5 +1,5 @@
 #!/bin/sh
-chroot=unstable-i386-sbuild
+chroot=unstable
 while getopts 'c:' opt
 do
     case "$opt" in
